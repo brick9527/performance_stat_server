@@ -1,0 +1,15 @@
+{
+  "types": ["feat", "fix", "docs", "style", "refactor", "test", "chore", "revert", "perf"],
+  "scope": {
+    "required": false,
+    "allowed": ["*"],
+    "validate": false,
+    "multiple": false
+  },
+  "warnOnFail": false,
+  "maxSubjectLength": 100,
+  "subjectPattern": ".+",
+  "subjectPatternErrorMsg": "subject does not match subject pattern!",
+  "helpMessage": "Please read README.md -> \"Commit Message Standard\" for more infomation ",
+  "autoFix": false
+}
