@@ -5,6 +5,7 @@ const koaCompose = require('koa-compose');
 const koaHelmet = require('koa-helmet');
 const koaSession = require('koa-session');
 const koaBody = require('koa-body');
+const cors = require('koa2-cors');
 
 const routeLoader = require('./libs/route_loader');
 const { server = {} } = require('./config');
@@ -32,6 +33,7 @@ async function main () {
   app.use(
     koaCompose([
       koaHelmet(),
+      cors(),
       koaSession(
         {
           key: server.sessionKey,

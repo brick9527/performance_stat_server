@@ -7,7 +7,8 @@
     "lint": "node_modules/.bin/eslint src --cache --exit-on-fatal-error",
     "dev": "cross-env mode=dev node src/index.js",
     "start": "cross-env mode=prod node src/index.js",
-    "commitmsg": "validate-commit-msg"
+    "commitmsg": "validate-commit-msg",
+    "refresh": "node bin/refresh_stat.js"
   },
   "pre-commit": [
     "lint",
@@ -30,6 +31,7 @@
   "dependencies": {
     "@koa/router": "^10.1.0",
     "cross-env": "^7.0.3",
+    "dayjs": "^1.11.0",
     "joi": "^17.4.2",
     "js-yaml": "^4.1.0",
     "koa": "^2.13.1",
@@ -37,6 +39,7 @@
     "koa-compose": "^4.1.0",
     "koa-helmet": "^6.1.0",
     "koa-session": "^6.2.0",
+    "koa2-cors": "^2.0.6",
     "lodash": "^4.17.21",
     "log4js": "^6.4.4",
     "mongoose": "^5.13.7",

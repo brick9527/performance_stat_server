@@ -16,7 +16,7 @@ module.exports = app => {
   // 加载路由
   routeFiles.forEach(fileName => {
     const base = path.parse(fileName).name;
-    logger.info(`load router: ${fileName} base: ${base}`);
+    logger.debug(`load router: ${fileName} base: ${base}`);
     require(path.join(routeFilePath, fileName))(router, base);
   });
 
