@@ -1,60 +1,23 @@
-process.env.process_name = process.env.process_name || 'server';
+const cluster = require('cluster');
+const process = require('process');
 
-const Koa = require('koa');
-const koaCompose = require('koa-compose');
-const koaHelmet = require('koa-helmet');
-const koaSession = require('koa-session');
-const koaBody = require('koa-body');
-const cors = require('koa2-cors');
+const udpServer = require('./process/udp');
+const koaServer = require('./process/koa');
+const processMain = [koaServer, udpServer];
 
-const routeLoader = require('./libs/route_loader');
-const { server = {} } = require('./config');
-const accessLogger = require('./middlewares/access_logger');
-const initContext = require('./libs/init_context');
+if (cluster.isMaster) {
+  console.log(`Primary ${process.pid} is running`);
 
-async function main () {
-  const app = new Koa({
-    proxy: true,
-    keys: server.cookieKey,
+  // 衍生工作进程。
+  for (let i = 0; i < 2; i++) {
+    cluster.fork({ processIndex: i });
+  }
+
+  cluster.on('exit', (worker, code, signal) => {
+    console.log(`worker ${worker.process.pid} died`);
   });
-
-  const { context } = app;
-
-  // 初始化上下文属性
-  await initContext(context);
-
-  context.logger.info(`starting ${process.env.process_name} with mode: ${process.env.mode}`);
-
-  app.on('error', err => {
-    context.logger.error(err);
-  });
-
-  // 加载中间件
-  app.use(
-    koaCompose([
-      koaHelmet(),
-      cors(),
-      koaSession(
-        {
-          key: server.sessionKey,
-          maxAge: 86400000,
-        },
-        app,
-      ),
-      koaBody({
-        multipart: true,
-        formidable: 1024 * 1024 * 1024 * 3, // 3GB
-      }),
-      accessLogger(),
-    ]),
-  );
-
-  // 加载路由
-  routeLoader(app);
-
-  app.listen(server.port || 3001, () => {
-    context.logger.info(`server is running at port: ${server.port || 3001}`);
-  });
+} else {
+  console.log('----------------', process.env.processIndex);
+  const index = process.env.processIndex;
+  processMain[index]();
 }
-
-main();
