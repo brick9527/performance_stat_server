@@ -23,7 +23,7 @@ async function main () {
   // 初始化上下文属性
   await initContext(context);
 
-  context.logger.info(`starting ${process.env.process_name} with mode: ${process.env.mode}`);
+  context.logger.info(`starting ${process.env.process_name} with mode: ${process.env.NODE_ENV}`);
 
   app.on('error', err => {
     context.logger.error(err);

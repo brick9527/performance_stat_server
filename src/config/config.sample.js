@@ -1,6 +1,6 @@
 module.exports = {
   server: {
-    port: 3001, // 服务开发端口
+    port: 3001, // 服务开放端口
     cookieKey: 'Your_Cookie_Key', // 用于cookie加密的秘钥
     sessionKey: 'Your_Session_Key', // 用于session加密的秘钥
     apiWhiteList: [ // api白名单，在白名单中无需验签
@@ -8,6 +8,9 @@ module.exports = {
     ],
     cipherSecret: 'your_cipher_secret', // 签名秘钥
     tokenTTL: 60 * 60 * 2, // token保存时间
+  },
+  udp: {
+    port: 41234, // udp服务器开放端口
   },
   mongodb: {
     host: '127.0.0.1', // mongodb主机

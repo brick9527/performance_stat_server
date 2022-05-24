@@ -1,12 +1,12 @@
 {
   "name": "koa-template",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A project template based on koa",
   "main": "src/index.js",
   "scripts": {
     "lint": "node_modules/.bin/eslint src --cache --exit-on-fatal-error",
-    "dev": "cross-env mode=dev node src/index.js",
-    "start": "cross-env mode=prod node src/index.js",
+    "dev": "cross-env NODE_ENV=develop node src/index.js",
+    "start": "cross-env NODE_ENV=production node src/index.js",
     "commitmsg": "validate-commit-msg",
     "refresh": "node bin/refresh_stat.js"
   },
