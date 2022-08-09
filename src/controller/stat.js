@@ -47,4 +47,16 @@ module.exports = {
     });
     ctx.body = { list: result };
   },
+
+  // 获取对应批次的进程信息
+  async getProcess (ctx) {
+    const { Process } = ctx.model;
+    const { batchId } = ctx.query.data;
+
+    const processList = await Process.find({ batchId })
+      .sort({ order: 1 })
+      .lean();
+
+    ctx.body = { list: processList };
+  },
 };
