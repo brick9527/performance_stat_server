@@ -12,7 +12,7 @@
     ├─config # 项目配置文件
     ├─controller # 逻辑控制层
     ├─libs # 公共代码库
-    ├─middlewares # 中间件
+    ├─middleware # 中间件
     ├─model # modal层
     ├─routes # 路由
     └─utils # 工具
