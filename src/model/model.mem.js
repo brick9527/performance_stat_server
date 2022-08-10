@@ -8,6 +8,13 @@ const memSchema = new BaseSchema({
     required: true,
   },
 
+  // 批次号
+  batchId: {
+    type: String,
+    index: true,
+    required: true,
+  },
+
   // 总共内存
   total: {
     type: Number,

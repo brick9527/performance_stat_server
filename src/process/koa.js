@@ -9,7 +9,7 @@ const cors = require('koa2-cors');
 
 const routeLoader = require('../libs/route_loader');
 const { server = {} } = require('../config');
-const accessLogger = require('../middlewares/access_logger');
+const accessLogger = require('../middleware/access_logger');
 const initContext = require('../libs/init_context');
 
 async function main () {

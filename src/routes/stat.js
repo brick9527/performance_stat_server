@@ -10,4 +10,9 @@ module.exports = (router, base) => {
     `/api/${base}/cpu`,
     stat.getCpu,
   );
+
+  router.get(
+    `/api/${base}/process`,
+    stat.getProcess,
+  );
 };
