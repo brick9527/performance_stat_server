@@ -60,7 +60,7 @@ async function insertCpuData (fileName, filePath) {
     const entry = {
       timestamp: new Date(cpuData.timestamp),
       batchId: cpuData.batchId,
-      coreIndex: cpuData.coreIndex,
+      coreIndex: String(cpuData.coreIndex),
       usedPercent: cpuData.usedPercent,
       tag: false,
     };

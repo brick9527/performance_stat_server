@@ -17,7 +17,6 @@ if (cluster.isMaster) {
     console.log(`worker ${worker.process.pid} died`);
   });
 } else {
-  console.log('----------------', process.env.processIndex);
   const index = process.env.processIndex;
   processMain[index]();
 }

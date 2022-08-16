@@ -17,7 +17,7 @@ const cpuSchema = new BaseSchema({
 
   // 核数
   coreIndex: {
-    type: Number,
+    type: String,
     required: true,
     index: true,
   },
