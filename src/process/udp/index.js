@@ -26,6 +26,7 @@ async function main () {
   });
 
   server.bind(udp.port || 41234);
+  return server;
 }
 
 if (require.main === module) {
