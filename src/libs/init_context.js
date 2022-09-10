@@ -1,6 +1,5 @@
 const log4js = require('../utils/log4js');
 const createMongoClient = require('../utils/mongodb');
-const createRedisClient = require('../utils/redis');
 const config = require('../config');
 const model = require('../model');
 
@@ -14,10 +13,10 @@ const model = require('../model');
  * @property {any} ctx.logger - 日志实例
  * @property {any} ctx.model - mongo model
  */
-module.exports = async ctx => {
+module.exports = async (ctx = {}) => {
   ctx.config = config;
   ctx.logger = log4js.getLogger(process.env.process_name || 'default');
   ctx.mongoClient = await createMongoClient();
-  ctx.redisClient = await createRedisClient();
   ctx.model = model;
+  return ctx;
 };

@@ -12,7 +12,7 @@
     ├─config # 项目配置文件
     ├─controller # 逻辑控制层
     ├─libs # 公共代码库
-    ├─middlewares # 中间件
+    ├─middleware # 中间件
     ├─model # modal层
     ├─routes # 路由
     └─utils # 工具
@@ -35,6 +35,11 @@
 ## 待做事项(TODO)
 
 - [x] 添加提交规范检测
+- [x] 添加进程数据
+- [X] 对接UI接口
+- [ ] 集成UI
+- [ ] 添加UDP进程
+- [ ] 接口添加参数校验
 - [ ] 完善路由注册机制
 - [ ] 完善控制层注册机制
 - [ ] 升级依赖

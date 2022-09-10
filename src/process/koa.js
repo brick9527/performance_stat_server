@@ -9,7 +9,7 @@ const cors = require('koa2-cors');
 
 const routeLoader = require('../libs/route_loader');
 const { server = {} } = require('../config');
-const accessLogger = require('../middlewares/access_logger');
+const accessLogger = require('../middleware/access_logger');
 const initContext = require('../libs/init_context');
 
 async function main () {
@@ -23,7 +23,7 @@ async function main () {
   // 初始化上下文属性
   await initContext(context);
 
-  context.logger.info(`starting ${process.env.process_name} with mode: ${process.env.mode}`);
+  context.logger.info(`starting ${process.env.process_name} with mode: ${process.env.NODE_ENV}`);
 
   app.on('error', err => {
     context.logger.error(err);

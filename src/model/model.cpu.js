@@ -8,9 +8,16 @@ const cpuSchema = new BaseSchema({
     required: true,
   },
 
+  // 批次号
+  batchId: {
+    type: String,
+    index: true,
+    required: true,
+  },
+
   // 核数
   coreIndex: {
-    type: Number,
+    type: String,
     required: true,
     index: true,
   },

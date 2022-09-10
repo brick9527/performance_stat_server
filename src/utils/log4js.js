@@ -94,7 +94,7 @@ const logConfig = {
   categories: {
     default: {
       appenders: ['stdout', 'debugFilter', 'infoFilter', 'warnFilter', 'errorFilter'],
-      level: process.env.mode === 'dev' ? 'debug' : 'info',
+      level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
     },
   },
 };
